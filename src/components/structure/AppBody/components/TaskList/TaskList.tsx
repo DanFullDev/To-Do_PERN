@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function ContentCard() {
+export default function TaskList() {
     return (
         <div>
             

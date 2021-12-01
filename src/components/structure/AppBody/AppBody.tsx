@@ -1,6 +1,7 @@
 import React from 'react'
+import "./AppBody.css"
 
-export default function ContentCard() {
+export default function AppBody() {
     return (
         <div>
             

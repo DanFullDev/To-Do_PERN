@@ -1,9 +1,11 @@
 import "./index.css"
 import './App.css';
+import AppContainer from "./components/AppContainer";
 
 function App() {
   return (
-    <div className="bg-gradient-to-r from-blue-900 to-pink-900 h-80">
+    <div className="wholeBody">
+      <AppContainer></AppContainer>
     </div>
     );
 }
