@@ -1,9 +1,9 @@
-import React from 'react'
+import "./AppFooter.css";
 
 export default function AppFooter() {
-    return (
-        <div>
-            
-        </div>
-    )
+  return (
+    <div className="font-semibold text-center text-gray-500">
+      Made with the PERN stack. Tailwindcss.
+    </div>
+  );
 }
