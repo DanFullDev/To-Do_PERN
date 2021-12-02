@@ -3,5 +3,10 @@ import TaskCreate from "./components/TaskCreate/TaskCreate";
 import TaskList from "./components/TaskList/TaskList";
 
 export default function AppBody() {
-  return <></>;
+  return (
+    <>
+      <TaskCreate></TaskCreate>
+      <TaskList></TaskList>
+    </>
+  );
 }
