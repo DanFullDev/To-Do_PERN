@@ -20,21 +20,23 @@ export default function TaskList() {
             <div
               key={index}
               className="bg-gray-800 w-full h-24 
-            border-b-4 border-gray-600 border-opacity-25
-            flex flex-row align-middle justify-center items-center text-left p-5"
+              border-b-4 border-gray-600
+              border-opacity-25 cursor-pointer
+              flex flex-row align-middle justify-center
+              items-center text-left p-5"
             >
               <button
                 className="border-solid border-gray-700 border-2
-              flex items-center justify-center
-              rounded-full h-10 w-10 mr-2 self-center transform duration-500
-              ease-in-out hover:scale-110 hover:text-blue-700"
+                flex items-center justify-center
+                rounded-full h-10 w-10 mr-2 self-center transform duration-500
+                ease-in-out hover:scale-110 hover:text-blue-700"
                 title={value.status}
               ></button>
               <div
                 className="bg-transparent text-2xl
-              flex-grow p-3 placeholder-white
-              placeholder-opacity-20 text-purple-200
-              cursor-pointer"
+                flex-grow p-3 placeholder-white
+                placeholder-opacity-20 text-purple-200
+              hover:text-blue-500"
               >
                 {value.task}
               </div>
