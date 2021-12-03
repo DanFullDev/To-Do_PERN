@@ -1,15 +1,12 @@
+import { useState } from "react";
 import "./TaskCreate.css";
 
 export default function TaskCreate() {
-  let todoValue: string | any;
+  const [todoValue, setTodoValue] = useState<string | any>();
 
-  const changeTodoValue = (event: any) => {
+  const changeTodoValue = () => {
     //Will call API to save this task and add it to the current task list
-    console.log(event);
-  };
-
-  const changeOnInput = (event: any) => {
-    todoValue = event.target.value;
+    console.log(todoValue);
   };
 
   return (
@@ -25,12 +22,12 @@ export default function TaskCreate() {
         rounded-full h-10 w-10 mr-2 self-center transform duration-500
         ease-in-out hover:scale-110 hover:text-blue-700"
         title="Create new todo"
-        onClick={($event) => changeTodoValue($event)}
+        onClick={() => changeTodoValue()}
       >
         +
       </button>
       <input
-        onInput={(value: any) => changeOnInput(value)}
+        onInput={(value: any) => setTodoValue(value)}
         placeholder="Create a new todo..."
         className="bg-transparent text-xl flex-grow p-3 placeholder-white placeholder-opacity-20 hover:shadow-xl"
       ></input>

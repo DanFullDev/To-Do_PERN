@@ -1,11 +1,11 @@
-export class taskModel {
-  name: string;
+export class TaskModel {
+  taskId: string;
   task: string;
   status: string;
 
-  constructor(taskName: string, taskDescription: string, taskStatus: string) {
-    this.name = taskName;
-    this.task = taskDescription;
-    this.status = taskStatus;
+  constructor(id: string, taskDescription: string, taskStatus: string) {
+    this.taskId = id;
+    this.task = taskDescription || "";
+    this.status = taskStatus || "INCOMPLETE";
   }
 }
