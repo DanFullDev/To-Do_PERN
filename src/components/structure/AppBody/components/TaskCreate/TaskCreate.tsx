@@ -15,7 +15,7 @@ export default function TaskCreate() {
   return (
     <div
       className="bg-gray-800 w-full h-24 mt-5 mb-5
-      rounded-md cursor-pointer shadow-lg p-5
+      rounded-md shadow-lg p-5
       flex flex-row align-middle
     text-white justify-center"
     >
@@ -32,7 +32,7 @@ export default function TaskCreate() {
       <input
         onInput={(value: any) => changeOnInput(value)}
         placeholder="Create a new todo..."
-        className="bg-transparent text-xl flex-grow p-3 placeholder-white placeholder-opacity-20"
+        className="bg-transparent text-xl flex-grow p-3 placeholder-white placeholder-opacity-20 hover:shadow-xl"
       ></input>
     </div>
   );

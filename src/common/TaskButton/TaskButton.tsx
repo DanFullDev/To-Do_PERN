@@ -2,7 +2,10 @@ import "./TaskButton.css";
 
 export default function TaskButton() {
   return (
-    <button className="bg-transparent rounded-full text-center cursor-pointer">
+    <button
+      className="bg-transparent rounded-full text-center cursor-pointer transform duration-500 ease-in-out hover:scale-110"
+      title="Change to dark mode"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="48"
