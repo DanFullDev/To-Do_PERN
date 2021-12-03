@@ -29,7 +29,9 @@ export default function TaskCreate() {
       <input
         onInput={($event: any) => setTodoValue($event.target.value)}
         placeholder="Create a new todo..."
-        className="bg-transparent text-3xl flex-grow p-3 placeholder-white placeholder-opacity-20 text-purple-200"
+        className="bg-transparent text-2xl
+        flex-grow p-3 placeholder-white
+        placeholder-opacity-20 text-purple-200"
       ></input>
     </div>
   );

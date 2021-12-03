@@ -1,27 +1,47 @@
 import "./TaskList.css";
 import { TaskModel } from "../../../../../models/taskModel";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function TaskList() {
   const [tasksLeft, setNumberOfTasks] = useState<string | number>("0");
   const [currentFilter, setCurrentFilter] = useState<string>("ALL");
-  const [taskList, setTaskList] = useState<TaskModel[]>();
-
-  //Get the list of tasks here
-  useEffect(() => {
-    setTaskList([]);
-    setNumberOfTasks("0");
-  }, []);
+  const [taskList, setTaskList] = useState<TaskModel[]>([
+    { task: "Example task", taskId: "0", status: "INCOMPLETE" },
+    { task: "Example task", taskId: "0", status: "INCOMPLETE" },
+    { task: "Example task", taskId: "0", status: "INCOMPLETE" },
+    { task: "Example task", taskId: "0", status: "INCOMPLETE" },
+  ]);
 
   return (
-    <div className="bg-gray-800 w-full h-96 mt-2 mb-2 rounded-md shadow-lg p-5 relative">
-      {taskList?.forEach((fetchedTask: TaskModel) => {
-        return (
-          <div>
-            <div>{fetchedTask.task}</div>
-          </div>
-        );
-      })}
+    <div className="bg-gray-800 w-full h-96 mt-2 mb-2 rounded-md shadow-lg relative">
+      <div className=" overflow-y-auto h-72">
+        {taskList.map((value: TaskModel, index) => {
+          return (
+            <div
+              key={index}
+              className="bg-gray-800 w-full h-24 
+            border-b-4 border-gray-600 border-opacity-25
+            flex flex-row align-middle justify-center items-center text-left p-5"
+            >
+              <button
+                className="border-solid border-gray-700 border-2
+              flex items-center justify-center
+              rounded-full h-10 w-10 mr-2 self-center transform duration-500
+              ease-in-out hover:scale-110 hover:text-blue-700"
+                title={value.status}
+              ></button>
+              <div
+                className="bg-transparent text-2xl
+              flex-grow p-3 placeholder-white
+              placeholder-opacity-20 text-purple-200
+              cursor-pointer"
+              >
+                {value.task}
+              </div>
+            </div>
+          );
+        })}
+      </div>
       <div
         className="flex flex-row
       justify-between align-middle text-white
