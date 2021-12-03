@@ -28,7 +28,7 @@ export default function TaskList() {
       text-opacity-20 font-semibold text-lg absolute
       inset-x-0 bottom-0 m-8"
       >
-        <div>{tasksLeft} items left</div>
+        <div className="itemNumber">{tasksLeft} items left</div>
         <div className="flex flex-row justify-between align-middle items-center space-x-8 ml-10">
           <div
             onClick={() => setCurrentFilter("ALL")}
@@ -61,7 +61,7 @@ export default function TaskList() {
             Completed
           </div>
         </div>
-        <div className="bottomItems">Clear Completed</div>
+        <div className="clearItem">Clear Completed</div>
       </div>
     </div>
   );
