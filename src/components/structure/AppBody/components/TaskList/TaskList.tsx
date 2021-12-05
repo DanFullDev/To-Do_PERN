@@ -71,16 +71,17 @@ export default function TaskList() {
                           className="border-solid border-gray-700 border-2
                 flex items-center justify-center
                 rounded-full h-10 w-10 mr-2 self-center transform duration-500
-                ease-in-out hover:scale-110 hover:text-blue-700"
+                ease-in-out hover:scale-110"
                           title={value.status}
                         ></button>
                         <div
                           className="bg-transparent text-2xl
                 flex-grow p-3 placeholder-white
-                placeholder-opacity-20 text-purple-200
-              hover:text-blue-500"
+                placeholder-opacity-20 text-purple-200"
                         >
-                          {value.task}
+                          <span className="hover:text-blue-500 cursor-pointer">
+                            {value.task}
+                          </span>
                         </div>
                       </div>
                     )}
