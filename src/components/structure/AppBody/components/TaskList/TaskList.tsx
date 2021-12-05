@@ -65,7 +65,7 @@ export default function TaskList() {
               border-b-4 border-gray-600
               border-opacity-25 cursor-pointer
               flex flex-row align-middle justify-center
-              items-center text-left p-5"
+              items-center text-left p-5 rounded-md"
                       >
                         <button
                           className="border-solid border-gray-700 border-2
