@@ -22,6 +22,23 @@ module.exports = {
       )
       .catch((error) => res.status(400).json({ error }));
   },
-  createTodo(req, res, next) {},
-  deleteTodo(req, res, next) {},
+  createTodo(req, res, next) {
+    const { description, status } = req.body;
+    todoModel
+      .createOne(description, status)
+      .then((data) =>
+        res
+          .status(200)
+          .json({ success: true, msg: "Task successfully created!" })
+      )
+      .catch((error) => res.status(400).json({ error }));
+  },
+  deleteTodo(req, res, next) {
+    todoModel
+      .deleteOne(req.params.taskId)
+      .then((data) =>
+        res.status(200).json({ success: true, message: "Task deleted!" })
+      )
+      .catch((error) => res.status(400).json({ error }));
+  },
 };

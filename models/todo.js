@@ -4,6 +4,7 @@ const Todo = {
   loadAll() {},
   loadOne(id) {},
   editOne(description, status, id) {},
+  createOne(description, status) {},
   deleteOne(id) {},
 };
 
