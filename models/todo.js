@@ -1,11 +1,11 @@
 const pool = require("../db");
 
 const Todo = {
-  loadAll() {},
-  loadOne(id) {},
-  editOne(description, status, id) {},
-  createOne(description, status) {},
-  deleteOne(id) {},
+  async loadAll() {},
+  async loadOne(id) {},
+  async editOne(description, status, id) {},
+  async createOne(description, status) {},
+  async deleteOne(id) {},
 };
 
 module.exports = Todo;

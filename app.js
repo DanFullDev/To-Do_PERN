@@ -9,18 +9,23 @@ var todoRouter = require("./routes/todo");
 
 var app = express();
 
-// view engine setup
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs");
-
 app.use(logger("dev"));
 app.use(express.json());
 app.use(cors);
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "client/build")));
+}
+
+//Routes
 app.use("/todo", todoRouter);
+
+//Sendback
+app.use("*", (req, res) =>
+  res.sendFile(path.join(__dirname, "client/build", "index.html"))
+);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
