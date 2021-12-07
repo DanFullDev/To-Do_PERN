@@ -1,17 +1,13 @@
 import "./TaskList.css";
 import { TaskModel } from "../../../../../models/taskModel";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { TodoService } from "../../../../../services/pernQueries";
 
 export default function TaskList() {
   const [tasksLeft, setNumberOfTasks] = useState<string | number>("0");
   const [currentFilter, setCurrentFilter] = useState<string>("ALL");
-  const [taskList, setTaskList] = useState<TaskModel[]>([
-    { task: "Example task", taskId: "0", status: "INCOMPLETE" },
-    { task: "Exmp2", taskId: "1", status: "INCOMPLETE" },
-    { task: "Exmp3", taskId: "2", status: "INCOMPLETE" },
-    { task: "Exmp4", taskId: "3", status: "INCOMPLETE" },
-  ]);
+  const [taskList, setTaskList] = useState<TaskModel[]>([]);
 
   const reorder = (
     list: TaskModel[],
@@ -21,9 +17,20 @@ export default function TaskList() {
     const result = [...list];
     const [removed] = result.splice(startIndex, 1);
     result.splice(endIndex, 0, removed);
-
     return result;
   };
+
+  //Load All Todos on Initialization
+  useEffect(() => {
+    TodoService.getAllTodos()
+      .then((res) => {
+        const todos = res.data;
+        const { rows } = todos.todoData;
+        setTaskList(rows);
+        setNumberOfTasks(rows.length);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
     <div className="bg-gray-800 w-full h-96 mt-2 mb-2 rounded-md shadow-lg relative">
@@ -36,7 +43,6 @@ export default function TaskList() {
             source.droppableId === destination.droppableId
           )
             return;
-
           setTaskList((prevTasks) =>
             reorder(prevTasks, source.index, destination.index)
           );
@@ -53,7 +59,7 @@ export default function TaskList() {
                 return (
                   <Draggable
                     key={index}
-                    draggableId={value.taskId + " " + index}
+                    draggableId={value.todo_id + " " + index}
                     index={index}
                   >
                     {(draggableProvider) => (
@@ -72,16 +78,21 @@ export default function TaskList() {
                 flex items-center justify-center
                 rounded-full h-10 w-10 mr-2 self-center transform duration-500
                 ease-in-out hover:scale-110"
-                          title={value.status}
+                          title={
+                            value.status === "INACTIVE"
+                              ? "Change to Completed"
+                              : "COMPLETED"
+                          }
                         ></button>
                         <div
                           className="bg-transparent text-2xl
                 flex-grow p-3 placeholder-white
                 placeholder-opacity-20 text-purple-200"
                         >
-                          <span className="hover:text-blue-500 cursor-pointer">
-                            {value.task}
-                          </span>
+                          <input
+                            value={value.description}
+                            className="hover:text-blue-500 cursor-pointer bg-transparent"
+                          ></input>
                         </div>
                       </div>
                     )}
@@ -132,7 +143,7 @@ export default function TaskList() {
             Completed
           </div>
         </div>
-        <div className="clearItem">Clear Completed</div>
+        <div className="clearItem">Delete Selected</div>
       </div>
     </div>
   );
