@@ -4,6 +4,12 @@ export const TodoService = {
   getAllTodos() {
     return axios.get("/todo/get/all");
   },
+  getAllActiveTodos() {
+    return axios.get("/todo/get/all/active");
+  },
+  getAllCompleteTodos() {
+    return axios.get("/todo/get/all/complete");
+  },
   getOneTodo(todoId: string) {
     return axios.get("/todo/get/" + todoId);
   },

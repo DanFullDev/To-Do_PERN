@@ -2,7 +2,19 @@ const pool = require("../db");
 
 const Todo = {
   async loadAll() {
-    return await pool.query("SELECT * FROM todo");
+    return await pool.query("SELECT * FROM todo ORDER BY todo_id DESC");
+  },
+  async loadAllActive() {
+    return await pool.query(
+      "SELECT * FROM todo WHERE status = $1 ORDER BY todo_id DESC",
+      ["INCOMPLETE"]
+    );
+  },
+  async loadAllCompleted() {
+    return await pool.query(
+      "SELECT * FROM todo WHERE status = $1 ORDER BY todo_id DESC",
+      ["COMPLETE"]
+    );
   },
   async loadOne(id) {
     return await pool.query("SELECT * FROM todo WHERE todo_id = $1", [id]);

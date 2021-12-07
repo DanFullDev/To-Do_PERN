@@ -5,6 +5,8 @@ const todoControl = require("../controllers/todoController");
 
 //Get all todos
 router.get("/get/all", todoControl.getAllTodos);
+router.get("/get/all/active", todoControl.getAllActiveTodos);
+router.get("/get/all/complete", todoControl.getAllCompleteTodos);
 //Get specific todo
 router.get("/get/:taskId", todoControl.getOneTodo);
 //Edit one todo

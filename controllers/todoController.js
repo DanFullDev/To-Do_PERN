@@ -7,6 +7,18 @@ module.exports = {
       .then((data) => res.status(200).json({ success: true, todoData: data }))
       .catch((error) => res.status(400).json({ error }));
   },
+  getAllActiveTodos(req, res, next) {
+    todoModel
+      .loadAllActive()
+      .then((data) => res.status(200).json({ success: true, todoData: data }))
+      .catch((error) => res.status(400).json({ error }));
+  },
+  getAllCompleteTodos(req, res, next) {
+    todoModel
+      .loadAllCompleted()
+      .then((data) => res.status(200).json({ success: true, todoData: data }))
+      .catch((error) => res.status(400).json({ error }));
+  },
   getOneTodo(req, res, next) {
     todoModel
       .loadOne(req.params.taskId)

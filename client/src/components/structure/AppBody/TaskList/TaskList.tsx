@@ -37,6 +37,26 @@ export default function TaskList(props: any) {
       .catch((error) => console.log(error));
   };
 
+  const loadActiveTodos = () => {
+    TodoService.getAllActiveTodos()
+      .then((res) => {
+        const { rows } = res.data.todoData;
+        setTaskList(rows);
+        setNumberOfTasks(rows.length);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const loadCompleteTodos = () => {
+    TodoService.getAllCompleteTodos()
+      .then((res) => {
+        const { rows } = res.data.todoData;
+        setTaskList(rows);
+        setNumberOfTasks(rows.length);
+      })
+      .catch((error) => console.log(error));
+  };
+
   const deleteTodo = () => {
     if (selectedValue && selectedValue !== "") {
       TodoService.deleteTodo(selectedValue)
@@ -49,6 +69,26 @@ export default function TaskList(props: any) {
     TodoService.editTodo(todoItem.description, "COMPLETE", todoItem.todo_id)
       .then((success) => loadTodos())
       .catch((error) => console.log(error));
+  };
+
+  const filterList = (filterValue: string) => {
+    setCurrentFilter(filterValue);
+    switch (filterValue) {
+      case "ALL":
+        console.log("get ALL");
+        loadTodos();
+        break;
+      case "ACTIVE":
+        console.log("get Incomplete");
+        loadActiveTodos();
+        break;
+      case "COMPLETED":
+        console.log("get Complete");
+        loadCompleteTodos();
+        break;
+      default:
+        break;
+    }
   };
 
   return (
@@ -131,7 +171,7 @@ export default function TaskList(props: any) {
           <div className="itemNumber">{tasksLeft} items left</div>
           <div className="flex flex-row justify-between align-middle items-center space-x-8 ml-10">
             <div
-              onClick={() => setCurrentFilter("ALL")}
+              onClick={() => filterList("ALL")}
               className={
                 currentFilter === "ALL"
                   ? "bottomItems text-blue-600"
@@ -141,17 +181,17 @@ export default function TaskList(props: any) {
               All
             </div>
             <div
-              onClick={() => setCurrentFilter("ACTIVE")}
+              onClick={() => filterList("ACTIVE")}
               className={
                 currentFilter === "ACTIVE"
                   ? "bottomItems text-blue-600"
                   : "bottomItems"
               }
             >
-              Active
+              Incomplete
             </div>
             <div
-              onClick={() => setCurrentFilter("COMPLETED")}
+              onClick={() => filterList("COMPLETED")}
               className={
                 currentFilter === "COMPLETED"
                   ? "bottomItems text-blue-600"
