@@ -4,9 +4,9 @@ Simple PERN todo application using React, TailwindCSS, NodeJs and PostgreSQL.
 
 # How to run
 
-- Run npm i in both the root folder and the front end folder.
-- For a React dev server, cd into the front end folder and run npm run start
-- To run the NodeJs server, run npm run dev
+- Run npm i in both the root folder and the client folder.
+- CD into client folder and run npm run build
+- To run the NodeJs server, run npm run dev, application will be served on default route
 
 # Live Application
 
