@@ -1,0 +1,44 @@
+.bottomItems {
+  @apply cursor-pointer transform duration-500 ease-in-out hover:text-blue-600 hover:scale-110;
+}
+
+.clearItem {
+  @apply cursor-pointer transform duration-500 ease-in-out hover:text-red-600 hover:scale-110;
+}
+
+.itemNumber {
+  @apply cursor-pointer transform duration-500 ease-in-out hover:text-white hover:scale-110;
+}
+
+.taskButton {
+  @apply border-solid border-gray-700 border-2
+                flex items-center justify-center
+                rounded-full h-10 w-10 mr-2 self-center;
+}
+
+.selectedButton {
+  @apply border-solid border-gray-700 border-2
+                flex items-center justify-center
+                rounded-full h-10 w-10 mr-2 self-center bg-blue-200;
+}
+
+.taskInput {
+  @apply bg-transparent text-2xl
+                flex-grow p-3 placeholder-white
+                placeholder-opacity-20 text-purple-200;
+}
+
+.taskDiv {
+  @apply bg-gray-800 w-full h-24 
+              border-b-4 border-gray-600
+              border-opacity-25 cursor-pointer
+              flex flex-row align-middle justify-center
+              items-center text-left p-5 rounded-md;
+}
+
+.taskFooter {
+  @apply flex flex-row
+      justify-between align-middle text-white
+      text-opacity-20 font-semibold text-lg absolute
+      inset-x-0 bottom-0 m-8;
+}

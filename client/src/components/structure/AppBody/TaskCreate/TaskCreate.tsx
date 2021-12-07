@@ -1,12 +1,15 @@
 import { useState } from "react";
+import { TodoService } from "../../../../services/pernQueries";
 import "./TaskCreate.css";
 
-export default function TaskCreate() {
+export default function TaskCreate(props: any) {
   const [todoValue, setTodoValue] = useState<string | any>();
 
-  const changeTodoValue = () => {
-    //Will call API to save this task and add it to the current task list
-    console.log(todoValue);
+  const createTodoItem = () => {
+    if (!!todoValue) {
+      TodoService.createTodo(todoValue).catch((error) => console.log(error));
+      props.onTaskCreated();
+    }
   };
 
   return (
@@ -22,7 +25,7 @@ export default function TaskCreate() {
         rounded-full h-10 w-10 mr-2 self-center transform duration-500
         ease-in-out hover:scale-110 hover:text-blue-700"
         title="Create new todo"
-        onClick={() => changeTodoValue()}
+        onClick={() => createTodoItem()}
       >
         +
       </button>

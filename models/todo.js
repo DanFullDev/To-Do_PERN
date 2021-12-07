@@ -14,8 +14,9 @@ const Todo = {
     );
   },
   async createOne(description, status) {
+    console.log(description, status);
     return await pool.query(
-      "INSERT INTO todo (description, status) VALUES($1, $2)",
+      "INSERT INTO todo (description, status) VALUES ($1, $2)",
       [description, status]
     );
   },

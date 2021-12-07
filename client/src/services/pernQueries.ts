@@ -15,10 +15,10 @@ export const TodoService = {
     };
     return axios.post("/todo/edit", todoBody);
   },
-  createTodo(todoDescription: string, todoStatus: string) {
+  createTodo(todoDescription: string) {
     let todoBody = {
       description: todoDescription,
-      status: todoStatus,
+      status: "INCOMPLETE",
     };
     return axios.post("/todo/create", todoBody);
   },
