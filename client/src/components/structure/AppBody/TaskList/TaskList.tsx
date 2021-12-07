@@ -9,7 +9,7 @@ export default function TaskList(props: any) {
   const [tasksLeft, setNumberOfTasks] = useState<string | number>("0");
   const [currentFilter, setCurrentFilter] = useState<string>("ALL");
   const [taskList, setTaskList] = useState<TaskModel[]>([]);
-  const [selectedValue, setSelectedValue] = useState<string>("");
+  const [selectedValue, setSelectedValue] = useState<string | any>(undefined);
 
   //Load All Todos on Initialization
   useEffect(() => {
@@ -30,19 +30,26 @@ export default function TaskList(props: any) {
   const loadTodos = () => {
     TodoService.getAllTodos()
       .then((res) => {
-        const todos = res.data;
-        const { rows } = todos.todoData;
+        const { rows } = res.data.todoData;
         setTaskList(rows);
         setNumberOfTasks(rows.length);
       })
       .catch((error) => console.log(error));
   };
 
-  const deleteTodo = (todoItem: TaskModel) => {};
+  const deleteTodo = () => {
+    if (selectedValue && selectedValue !== "") {
+      TodoService.deleteTodo(selectedValue)
+        .then((success) => loadTodos())
+        .catch((error) => console.log(error));
+    }
+  };
 
-  const editTodo = (todoItem: TaskModel) => {};
-
-  const filterList = () => {};
+  const completeTodo = (todoItem: TaskModel) => {
+    TodoService.editTodo(todoItem.description, "COMPLETE", todoItem.todo_id)
+      .then((success) => loadTodos())
+      .catch((error) => console.log(error));
+  };
 
   return (
     <>
@@ -95,14 +102,18 @@ export default function TaskList(props: any) {
                             }}
                           ></button>
                           <div className="taskInput">
-                            <input
-                              value={value.description}
-                              onChange={() => {}}
-                              className="hover:text-blue-500 cursor-pointer bg-transparent"
-                            ></input>
+                            <span className="hover:text-blue-500 cursor-pointer bg-transparent">
+                              {value.description}
+                            </span>
                           </div>
                           {selectedValue === value.todo_id && (
-                            <button className="text-purple-200 hover:text-green-500 transform ease-in-out duration-500 hover:scale-110">
+                            <button
+                              className="text-purple-200 hover:text-green-500 transform
+                             ease-in-out duration-500 hover:scale-110"
+                              onClick={() => {
+                                completeTodo(value);
+                              }}
+                            >
                               Complete Task
                             </button>
                           )}
@@ -150,7 +161,14 @@ export default function TaskList(props: any) {
               Completed
             </div>
           </div>
-          <div className="clearItem">Delete Selected</div>
+          <div
+            className="clearItem"
+            onClick={() => {
+              deleteTodo();
+            }}
+          >
+            Delete Selected
+          </div>
         </div>
       </div>
     </>

@@ -14,9 +14,9 @@ module.exports = {
       .catch((error) => res.status(400).json({ error }));
   },
   editTodo(req, res, next) {
-    const { description, status, id } = req.body;
+    const { description, status, todo_id } = req.body;
     todoModel
-      .editOne(description, status, id)
+      .editOne(description, status, todo_id)
       .then((data) =>
         res.status(200).json({ success: true, message: "Todo task updated!" })
       )

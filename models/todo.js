@@ -5,7 +5,7 @@ const Todo = {
     return await pool.query("SELECT * FROM todo");
   },
   async loadOne(id) {
-    return await pool.query("SELECT * FROM todo WHERE todo_id = $1  ", [id]);
+    return await pool.query("SELECT * FROM todo WHERE todo_id = $1", [id]);
   },
   async editOne(description, status, id) {
     return await pool.query(
@@ -14,7 +14,6 @@ const Todo = {
     );
   },
   async createOne(description, status) {
-    console.log(description, status);
     return await pool.query(
       "INSERT INTO todo (description, status) VALUES ($1, $2)",
       [description, status]
