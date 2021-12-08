@@ -6,6 +6,7 @@ const devConfig = `postgresql://${process.env.PG_USER}:${process.env.PG_PASSWORD
 const proConfig = process.env.DATABASE_URL;
 
 console.log("PROCESS ENV:", process.env.NODE_ENV);
+console.log(process.env.DATABASE_URL);
 
 const pool = new Pool({
   connectionString:
