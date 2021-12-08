@@ -75,15 +75,12 @@ export default function TaskList(props: any) {
     setCurrentFilter(filterValue);
     switch (filterValue) {
       case "ALL":
-        console.log("get ALL");
         loadTodos();
         break;
       case "ACTIVE":
-        console.log("get Incomplete");
         loadActiveTodos();
         break;
       case "COMPLETED":
-        console.log("get Complete");
         loadCompleteTodos();
         break;
       default:
