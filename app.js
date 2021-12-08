@@ -24,11 +24,8 @@ if (process.env.NODE_ENV === "production") {
 app.use("/todo", todoRouter);
 
 app.get("*", (req, res) => {
-  const index = path.join(__dirname, "client", "build/index.html");
-  res.sendFile(index);
+  res.sendFile(path.join(__dirname, "client/build/index.html"));
 });
-
-console.log(__dirname);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
