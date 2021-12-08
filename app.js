@@ -26,8 +26,7 @@ if (process.env.NODE_ENV === "production") {
 app.use("/todo", todoRouter);
 
 app.get("*", (req, res) => {
-  console.log("YES");
-  res.sendFile(path.join(__dirname, "./client", "build", "ndex.html"));
+  res.sendFile(path.resolve("index.html"));
 });
 
 // catch 404 and forward to error handler
