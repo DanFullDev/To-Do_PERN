@@ -39,6 +39,5 @@
 .taskFooter {
   @apply flex flex-row
       justify-between align-middle text-white
-      text-opacity-20 font-semibold text-lg absolute
-      inset-x-0 bottom-0 m-8;
+      text-opacity-20 font-semibold text-xs sm:text-lg m-8;
 }

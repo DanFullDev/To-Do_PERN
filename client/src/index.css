@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html {
-  @apply bg-gray-900;
+  @apply bg-gray-900 w-screen;
 }
 
 ::-webkit-scrollbar {

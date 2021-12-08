@@ -166,7 +166,7 @@ export default function TaskList(props: any) {
         </DragDropContext>
         <div className="taskFooter">
           <div className="itemNumber">{tasksLeft} items left</div>
-          <div className="flex flex-row justify-between align-middle items-center space-x-8 ml-10">
+          <div className="flex flex-row justify-between align-middle items-center space-x-8">
             <div
               onClick={() => filterList("ALL")}
               className={
