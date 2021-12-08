@@ -12,4 +12,4 @@ Simple PERN todo application using React, TailwindCSS, NodeJs and PostgreSQL.
 
 # Live Application
 
-Should be posted on Heroku once its complete...
+Should be posted on Heroku once its complete... https://pern-todo-stack.herokuapp.com/
