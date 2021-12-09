@@ -140,7 +140,7 @@ export default function TaskList(props: any) {
                           ></button>
                           <div className="taskInput">
                             <span className="hover:text-blue-500 cursor-pointer bg-transparent">
-                              {value.description}
+                              {value.description.slice(0, 20)}
                             </span>
                           </div>
                           {selectedValue === value.todo_id && (
