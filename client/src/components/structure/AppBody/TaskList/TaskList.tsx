@@ -66,7 +66,8 @@ export default function TaskList(props: any) {
   };
 
   const sliceText = (value: string) => {
-    return value.slice(0, 30);
+    let tempString = value.slice(0, 60) + "..."
+    return tempString;
   };
 
   const completeTodo = (todoItem: TaskModel) => {
