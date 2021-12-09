@@ -65,6 +65,10 @@ export default function TaskList(props: any) {
     }
   };
 
+  const sliceText = (value: string) => {
+    return value.slice(0, 30);
+  };
+
   const completeTodo = (todoItem: TaskModel) => {
     TodoService.editTodo(todoItem.description, "COMPLETE", todoItem.todo_id)
       .then((success) => loadTodos())
@@ -140,7 +144,7 @@ export default function TaskList(props: any) {
                           ></button>
                           <div className="taskInput">
                             <span className="hover:text-blue-500 cursor-pointer bg-transparent">
-                              {value.description.slice(0, 20)}
+                              {sliceText(value.description)}
                             </span>
                           </div>
                           {selectedValue === value.todo_id && (
