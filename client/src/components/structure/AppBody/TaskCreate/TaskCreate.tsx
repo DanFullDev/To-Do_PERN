@@ -3,12 +3,21 @@ import { TodoService } from "../../../../services/pernQueries";
 import "./TaskCreate.css";
 
 export default function TaskCreate(props: any) {
-  const [todoValue, setTodoValue] = useState<string | any>();
+  const [todoValue, setTodoValue] = useState<string | any>("");
 
   const createTodoItem = () => {
     if (!!todoValue) {
       TodoService.createTodo(todoValue).catch((error) => console.log(error));
       props.onTaskCreated();
+      setTodoValue("");
+    }
+  };
+
+  const checkPressedKey = (key: any) => {
+    if (key.key === "Enter") {
+      TodoService.createTodo(todoValue).catch((error) => console.log(error));
+      props.onTaskCreated();
+      setTodoValue("");
     }
   };
 
@@ -30,7 +39,9 @@ export default function TaskCreate(props: any) {
         +
       </button>
       <input
+        value={todoValue}
         onInput={($event: any) => setTodoValue($event.target.value)}
+        onKeyDown={(key) => checkPressedKey(key)}
         placeholder="Create a new todo..."
         className="bg-transparent text-2xl
         flex-grow p-3 placeholder-white

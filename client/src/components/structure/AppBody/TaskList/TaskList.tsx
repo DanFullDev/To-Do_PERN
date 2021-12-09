@@ -66,8 +66,11 @@ export default function TaskList(props: any) {
   };
 
   const sliceText = (value: string) => {
-    let tempString = value.slice(0, 60) + "..."
-    return tempString;
+    if (value.length >= 60) {
+      let tempString = value.slice(0, 60) + "...";
+      return tempString;
+    }
+    return value;
   };
 
   const completeTodo = (todoItem: TaskModel) => {
