@@ -90,6 +90,7 @@ export default function TaskList(props: any) {
   };
 
   const filterList = (filterValue: string) => {
+    setSelectedValue("");
     setCurrentFilter(filterValue);
     switch (filterValue) {
       case "ALL":
